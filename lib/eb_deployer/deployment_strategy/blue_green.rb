@@ -60,7 +60,8 @@ module EbDeployer
 
       private
       def active_ebenv?(ebenv)
-        ebenv.cname_prefix == @component.cname_prefix
+        str = ebenv.cname_prefix.nil? ? nil : ebenv.cname_prefix.gsub(/\..*/,'')
+        str == @component.cname_prefix
       end
 
       def ebenvs
